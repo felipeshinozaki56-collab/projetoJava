@@ -1,0 +1,19 @@
+joao.silva oswaldo.veblen
+carlos.souza joao.silva
+douglas.ferreira joao.silva
+patricia.fischer heitor.maciel
+mike.paterson david.park
+dennis.ritchie patricia.fischer
+les.valiant mike.paterson
+bob.constable carlos.souza
+david.park heitor.maciel
+heitor.maciel oswaldo.veblen
+
+carlos.souza bob.constable
+heitor.maciel joao.silva
+heitor.maciel carlos.souza
+les.valiant joao.silva
+les.valiant dennis.ritchie
+dennis.ritchie les.valiant
+patricia.fischer michael.rabin
+les.valiant oswaldo.veblen
