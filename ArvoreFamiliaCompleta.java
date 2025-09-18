@@ -73,8 +73,8 @@ public class ArvoreFamiliaCompleta {
         if (nivel == 1) return "neto";
         if (nivel == 2) return "bisneto";
         String s = "";
-        for (int i = 0; i < nivel - 2; i++) s += "tatar";
-        return s + "aneto";
+        for (int i = 0; i < nivel - 2; i++) s += "tata";
+        return s + "raneto";
     }
 
     // Formata ancestral
@@ -83,8 +83,8 @@ public class ArvoreFamiliaCompleta {
         if (nivel == 1) return "avô";
         if (nivel == 2) return "bisavô";
         String s = "";
-        for (int i = 0; i < nivel - 2; i++) s += "tatar";
-        return s + "avô";
+        for (int i = 0; i < nivel - 2; i++) s += "tata";
+        return s + "ravô";
     }
 
     // Testa irmãos
