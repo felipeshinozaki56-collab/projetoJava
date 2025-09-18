@@ -114,28 +114,30 @@ public class ArvoreFamiliaCompleta {
         Pessoa[] ancP = getAncestrais(p, niveisP);
         Pessoa[] ancQ = getAncestrais(q, niveisQ);
 
-        // Encontra ancestral comum mais próximo
+        // Encontra o ancestral comum mais próximo
         Pessoa ancestral = null;
         int distP = -1, distQ = -1;
+        int melhorSoma = Integer.MAX_VALUE;
 
         for (int i = 0; ancP[i] != null; i++) {
             for (int j = 0; ancQ[j] != null; j++) {
                 if (ancP[i] == ancQ[j]) {
-                    ancestral = ancP[i];
-                    distP = niveisP[i];
-                    distQ = niveisQ[j];
-                    break;
+                    int soma = niveisP[i] + niveisQ[j];
+                    if (soma < melhorSoma) {
+                        melhorSoma = soma;
+                        ancestral = ancP[i];
+                        distP = niveisP[i];
+                        distQ = niveisQ[j];
+                    }
                 }
             }
-            if (ancestral != null) break;
         }
 
         if (ancestral == null) return "sem relacao";
 
         // Calcula grau dos primos
-        int k = (distP < distQ) ? distP : distQ;
-        int m = distP - distQ;
-        if (m < 0) m = -m;
+        int k = Math.min(distP, distQ);
+        int m = Math.abs(distP - distQ);
 
         if (k == 0) return "irmao"; // primo-0 = irmãos
 
