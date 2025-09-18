@@ -2,6 +2,8 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
 
+// Aluno: Felipe Hideki Rodrigues Shinozaki
+//RA: 10438584
 class Pessoa {
     String nome;
     Pessoa pai;
