@@ -26,7 +26,7 @@ class Pessoa {
 
 public class ArvoreFamiliaCompleta {
 
-    static Pessoa[] pessoas = new Pessoa[200]; // ajustar se precisar de mais
+    static Pessoa[] pessoas = new Pessoa[200];
     static int qtd = 0;
 
     static Pessoa buscar(String nome) {
@@ -45,7 +45,7 @@ public class ArvoreFamiliaCompleta {
         return p;
     }
 
-    // distância em arestas de 'from' até 'to' (0 se same person, 1 se pai imediato, ...)
+    // distância em arestas de 'from' até 'to' (0 = mesma pessoa, 1 = pai imediato, 2 = avô, ...)
     static int distancia(Pessoa from, Pessoa to) {
         int d = 0;
         Pessoa cur = from;
@@ -57,18 +57,18 @@ public class ArvoreFamiliaCompleta {
         return -1;
     }
 
-    // Formata descendente (1=filho,2=neto,3=bisneto,4=tataraneto,...)
+    // Formata descendente: 1=filho,2=neto,3=bisneto,4=tataraneto,...
     static String formatarDescendente(int nivel) {
         if (nivel == 1) return "filho";
         if (nivel == 2) return "neto";
         if (nivel == 3) return "bisneto";
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < nivel - 3; i++) sb.append("tatar");
-        sb.append("aneto"); // sufixo correto: "aneto" -> "tataraneto"
+        sb.append("aneto"); // tataraneto, tatartataraneto, ...
         return sb.toString();
     }
 
-    // Formata ancestral (1=pai,2=avô,3=bisavô,4=tataravô,...)
+    // Formata ancestral: 1=pai,2=avô,3=bisavô,4=tataravô,...
     static String formatarAncestral(int nivel) {
         if (nivel == 1) return "pai";
         if (nivel == 2) return "avô";
@@ -83,7 +83,7 @@ public class ArvoreFamiliaCompleta {
         return (p != null && q != null && p.pai != null && p.pai == q.pai);
     }
 
-    // retorna ancestrais com níveis (0=self,1=parent,...). niveis[i] corresponde ao ancP[i].
+    // retorna ancestrais com níveis (0=self,1=parent,2=avô,...). niveis[i] corresponde ao anc[i]
     static Pessoa[] getAncestrais(Pessoa p, int[] niveis) {
         Pessoa[] lista = new Pessoa[200];
         int idx = 0;
@@ -100,7 +100,7 @@ public class ArvoreFamiliaCompleta {
         return lista;
     }
 
-    // calcula primos no formato desejado (primo-k em grau m), ou "irmao" se for o caso
+    // calcula primos no formato "primo-k em grau m" ou "irmao" caso sejam irmãos
     static String primos(Pessoa p, Pessoa q) {
         int[] niveisP = new int[200];
         int[] niveisQ = new int[200];
@@ -130,25 +130,25 @@ public class ArvoreFamiliaCompleta {
         int degree = Math.min(distP, distQ) - 1; // primo-k, k = min(distP,distQ)-1
         int removal = Math.abs(distP - distQ);   // em grau m
 
-        // regra: se k==0 e remoção==0 -> irmãos (candidato já coberto antes, mas garantimos)
+        // se degree == 0 e removal == 0 => irmãos (mas já checado antes)
         if (degree == 0 && removal == 0) return "irmao";
 
         return "primo-" + degree + " em grau " + removal;
     }
 
     static String parentesco(Pessoa p, Pessoa q) {
-        // primeiro: p é descendente de q?
+        // p descendente de q?
         int dDesc = distancia(p, q);
         if (dDesc >= 1) return formatarDescendente(dDesc);
 
-        // p é ancestral de q?
+        // p ancestral de q?
         int dAnc = distancia(q, p);
         if (dAnc >= 1) return formatarAncestral(dAnc);
 
         // irmãos?
         if (irmaos(p, q)) return "irmao";
 
-        // senão, primos
+        // primos (inclui os casos "primo-0 em grau m")
         return primos(p, q);
     }
 

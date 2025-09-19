@@ -1,0 +1,23 @@
+ana.silva jose.silva
+maria.silva jose.silva
+carlos.silva ana.silva
+paula.silva ana.silva
+ricardo.silva maria.silva
+fernando.silva maria.silva
+joao.silva carlos.silva
+aline.silva paula.silva
+roberto.silva ricardo.silva
+clara.silva fernando.silva
+luiz.silva joao.silva
+
+ana.silva maria.silva
+carlos.silva paula.silva
+carlos.silva jose.silva
+joao.silva ana.silva
+joao.silva maria.silva
+joao.silva ricardo.silva
+aline.silva carlos.silva
+roberto.silva clara.silva
+luiz.silva jose.silva
+luiz.silva aline.silva
+maria.silva pedro.souza
