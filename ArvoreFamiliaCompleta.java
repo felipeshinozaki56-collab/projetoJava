@@ -1,7 +1,8 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
-
+// Aluno: Felipe Hideki Rodrigues Shinozaki 
+// RA: 10438584
 // Classe que representa uma pessoa na árvore genealógica
 class Pessoa {
     String nome;
